@@ -95,37 +95,38 @@ export default function EventsPage() {
 
       <div className="relative z-10 flex flex-wrap justify-center items-center gap-6 pt-10 px-4">
         {events.map((event) => (
-          <motion.div
-            key={event.id}
-            className="relative w-64 h-80 bg-gray-900 rounded-lg shadow-lg overflow-hidden cursor-pointer"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            whileHover={{ scale: 1.08, rotateY: 10, rotateX: 5 }}
-            transition={{ duration: 0.5, delay: event.id * 0.1, ease: "easeInOut" }}
-            onMouseEnter={() => setHoveredId(event.id)}
-            onMouseLeave={() => setHoveredId(null)}
-          >
-            <motion.img
-              src={event.image}
-              alt={event.title}
-              className="w-full h-full object-cover"
-              animate={{ opacity: hoveredId === event.id ? 0.5 : 1 }}
-              transition={{ duration: 0.3 }}
-            />
-
+          <Link key={event.id} href={`/events/${event.id}`} passHref>
             <motion.div
-              className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: hoveredId === event.id ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
+              className="relative w-64 h-80 bg-gray-900 rounded-lg shadow-lg overflow-hidden cursor-pointer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.08, rotateY: 10, rotateX: 5 }}
+              transition={{ duration: 0.5, delay: event.id * 0.1, ease: "easeInOut" }}
+              onMouseEnter={() => setHoveredId(event.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              <h3 className="text-xl font-bold text-red-500">{event.title}</h3>
-              <p className="text-sm text-gray-300 px-4 text-center">{event.description}</p>
-              <Link href={`/events/${event.id}`} className="mt-4 text-white border border-red-500 px-4 py-2 rounded-md hover:bg-red-500 transition">
-                View Details
-              </Link>
+              <motion.img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-full object-cover"
+                animate={{ opacity: hoveredId === event.id ? 0.5 : 1 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              <motion.div
+                className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: hoveredId === event.id ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-xl font-bold text-red-500">{event.title}</h3>
+                <p className="text-sm text-gray-300 px-4 text-center">{event.description}</p>
+                <span className="mt-4 text-white border border-red-500 px-4 py-2 rounded-md hover:bg-red-500 transition">
+                  View Details
+                </span>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </Link>
         ))}
       </div>
     </div>
