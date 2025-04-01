@@ -1,11 +1,29 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { eventsData } from "@/data/eventsData";
+import Link from "next/link";
 
 export default function EventDetailPage() {
-  const { id } = useParams();
-  const event = eventsData.find((e) => e.id === Number(id));
+  const params = useParams(); // params is now a Promise
+  const [eventId, setEventId] = useState<string | null>(null);
+  const [event, setEvent] = useState<any>(null);
+
+  // Unwrap params using useEffect
+  useEffect(() => {
+    if (params.id) {
+      setEventId(params.id as string);
+    }
+  }, [params]);
+
+  // Get event data when eventId is set
+  useEffect(() => {
+    if (eventId) {
+      const foundEvent = eventsData.find((e) => e.id === Number(eventId));
+      setEvent(foundEvent || null);
+    }
+  }, [eventId]);
 
   if (!event) {
     return <div className="text-white text-center mt-10 text-2xl">Event not found</div>;
@@ -14,7 +32,7 @@ export default function EventDetailPage() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col items-center py-10 px-4">
       <h1 className="text-5xl font-bold text-red-500 mb-6">{event.title}</h1>
-      
+
       <img src={event.image} alt={event.title} className="w-full max-w-2xl h-80 object-cover rounded-lg shadow-lg mb-6" />
 
       <p className="text-lg text-gray-300 text-center max-w-2xl">{event.description}</p>
@@ -36,6 +54,13 @@ export default function EventDetailPage() {
           </p>
         ))}
       </div>
+
+      {/* 🔥 ADD REGISTER BUTTON */}
+      <Link href={`/register/${eventId}`}>
+        <button className="mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg">
+          Register Now
+        </button>
+      </Link>
     </div>
   );
 }

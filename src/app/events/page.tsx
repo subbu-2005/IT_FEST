@@ -13,8 +13,11 @@ const events = [
   { id: 5, title: "Quiz", image: "/images/events/quiz.avif", description: "Create fun games." },
   { id: 6, title: "Treasure Hunt", image: "/images/events/hunt.jpeg", description: "Experience the future." },
   { id: 7, title: "Debate", image: "/images/events/debate.jpeg", description: "Smart solutions." },
-  { id: 8, title: "Code Battle", image: "/images/events/code.avif", description: "Decentralize everything!" }
+  { id: 8, title: "Code Battle", image: "/images/events/code.avif", description: "Decentralize everything!" },
+  { id: 9, title: "Photography", image: "/images/events/photography.jpeg", description: "Capture the moment." },
+  { id: 10, title: "Reel Making", image: "/images/events/reelmaking.jpeg", description: "Create engaging reels." }
 ];
+
 
 export default function EventsPage() {
   const [hoveredId, setHoveredId] = useState<number | null>(null);

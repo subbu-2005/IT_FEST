@@ -1,7 +1,7 @@
 export const eventsData = [
     {
       id: 1,
-      title: "Hackathon",
+      title: "coding",
       image: "/images/events/hack.jpeg",
       description: "Code and compete!",
       rules: [
@@ -10,13 +10,13 @@ export const eventsData = [
         "No external help or pre-written code is allowed.",
       ],
       organizers: [
-        { name: "John Doe", contact: "+91 9876543210" },
-        { name: "Jane Smith", contact: "+91 8765432109" },
+        { name: "Ashiq", contact :"+91 9876543210" },
+        { name: "", contact: "+91 8765432109" },
       ],
     },
     {
       id: 2,
-      title: "AI Workshop",
+      title: "IT Quiz",
       image: "/images/events/aiwork.jpeg",
       description: "Learn AI & ML.",
       rules: [
@@ -48,7 +48,7 @@ export const eventsData = [
 
     {
         id: 4,
-        title: "BGMI Tournament",
+        title: "IT Brand Rangoli",
         image: "/images/events/bgmi.jpg",
         description: "Battle it out!",
         rules: [
@@ -64,7 +64,7 @@ export const eventsData = [
 
       {
         id: 5,
-        title: "BGMI Tournament",
+        title: "Photo edits",
         image: "/images/events/bgmi.jpg",
         description: "Battle it out!",
         rules: [
@@ -79,7 +79,7 @@ export const eventsData = [
       },
       {
         id: 6,
-        title: "BGMI Tournament",
+        title: "Video  editing",
         image: "/images/events/bgmi.jpg",
         description: "Battle it out!",
         rules: [
@@ -94,7 +94,7 @@ export const eventsData = [
       },
       {
         id: 7,
-        title: "BGMI Tournament",
+        title: "Trueasure hunt",
         image: "/images/events/bgmi.jpg",
         description: "Battle it out!",
         rules: [
@@ -110,7 +110,7 @@ export const eventsData = [
 
       {
         id: 8,
-        title: "BGMI Tournament",
+        title: "Soft interview",
         image: "/images/events/bgmi.jpg",
         description: "Battle it out!",
         rules: [
@@ -123,5 +123,44 @@ export const eventsData = [
           { name: "Emily Davis", contact: "+91 4321098765" },
         ],
       },
+
+
+
+      {
+        id: 9,
+        title: "Gaming Girls",
+        image: "/images/events/bgmi.jpg",
+        description: "Battle it out!",
+        rules: [
+          "Solo and squad matches available.",
+          "No cheating or emulators allowed.",
+          "Follow the game rules and ethics.",
+        ],
+        organizers: [
+          { name: "Chris Martin", contact: "+91 5432109876" },
+          { name: "Emily Davis", contact: "+91 4321098765" },
+        ],
+      },
+
+
+
+      {
+        id: 10,
+        title: "PPT",
+        image: "/images/events/bgmi.jpg",
+        description: "Battle it out!",
+        rules: [
+          "Solo and squad matches available.",
+          "No cheating or emulators allowed.",
+          "Follow the game rules and ethics.",
+        ],
+        organizers: [
+          { name: "Chris Martin", contact: "+91 5432109876" },
+          { name: "Emily Davis", contact: "+91 4321098765" },
+        ],
+      },
+
+
+      
   ];
   
