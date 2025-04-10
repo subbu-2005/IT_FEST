@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { toast, ToastContainer } from "react-toastify";
@@ -34,15 +34,12 @@ const eventDetails: Record<string, number> = {
 export default function RegisterPage() {
   const [selectedTeam, setSelectedTeam] = useState<string>("");
   const [selectedEvent, setSelectedEvent] = useState<string>("");
-  const [participants, setParticipants] = useState<number>(0);
   const [participantData, setParticipantData] = useState<Participant[]>([]);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const handleEventChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedEvent = event.target.value;
     setSelectedEvent(selectedEvent);
     const count = eventDetails[selectedEvent] || 0;
-    setParticipants(count);
     setParticipantData(Array(count).fill({ name: "", class: "", contact: "" }));
   };
 
@@ -80,7 +77,6 @@ export default function RegisterPage() {
         toast.success("🎉 Registration Successful!", { position: "top-right", autoClose: 3000 });
         setSelectedTeam("");
         setSelectedEvent("");
-        setParticipants(0);
         setParticipantData([]);
       } else {
         toast.error("❌ Registration failed. Try again.", { position: "top-right" });

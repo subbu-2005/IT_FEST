@@ -34,8 +34,9 @@ export default function EventsPage() {
     renderer.domElement.style.left = "0";
     renderer.domElement.style.zIndex = "-1";
 
-    if (mountRef.current) {
-      mountRef.current.appendChild(renderer.domElement);
+    const currentMountRef = mountRef.current; // Copy mountRef.current to a variable
+    if (currentMountRef) {
+      currentMountRef.appendChild(renderer.domElement);
     }
 
     const light = new THREE.AmbientLight(0xff0000, 1);
@@ -81,7 +82,7 @@ export default function EventsPage() {
       window.removeEventListener("scroll", handleScroll);
       scene.clear();
       renderer.dispose();
-      mountRef.current?.removeChild(renderer.domElement);
+      currentMountRef?.removeChild(renderer.domElement); // Use the copied variable
     };
   }, []);
 

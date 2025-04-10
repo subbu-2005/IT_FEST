@@ -128,7 +128,7 @@ export default function Home() {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 px-4">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 animate-gradient">
           <span className="animate-glow-white">SPECTROPHIA</span>
-          <span className="animate-glow-red text-red-500">'25</span>
+          <span className="animate-glow-red text-red-500">&apos;25</span> {/* Escaped single quote */}
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300">
           Unleash the Spectrum of Innovation
