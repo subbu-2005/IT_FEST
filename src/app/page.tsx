@@ -20,7 +20,7 @@ import Navbar from "@/components/Navbar";
 
 // ✨ Swirling Particles
 function SwirlingParticles() {
-  const ref = useRef<any>();
+  const ref = useRef<THREE.Points>(null);
   const positions = useMemo(() => {
     const arr = [];
     for (let i = 0; i < 1000; i++) {
@@ -49,7 +49,7 @@ function SwirlingParticles() {
 
 // 🔴 Floating Red Dots
 function FloatingRedDots() {
-  const pointsRef = useRef(null);
+  const pointsRef = useRef<THREE.Points>(null);
 
   useFrame(({ clock }) => {
     if (pointsRef.current) {
@@ -77,7 +77,8 @@ function FloatingRedDots() {
 
 // 🌀 Glowing Vortex Ring
 function VortexRing() {
-  const ringRef = useRef<any>();
+  const ringRef = useRef<THREE.Mesh>(null);
+
   useFrame(({ clock }) => {
     if (ringRef.current) {
       ringRef.current.rotation.z = clock.getElapsedTime() * 0.4;
@@ -92,7 +93,6 @@ function VortexRing() {
       rotation={[Math.PI / 2, 0, 0]}
     >
       <meshBasicMaterial
-        attach="material"
         color="#ff0044"
         transparent
         opacity={0.6}
@@ -150,13 +150,13 @@ export default function Home() {
         }
         @keyframes glow-red {
           0% {
-            text-shadow: 0 0 25px #FF0000, 0 0 40px #880000;
+            text-shadow: 0 0 25px #ff0000, 0 0 40px #880000;
           }
           50% {
             text-shadow: 0 0 50px #ff0000, 0 0 60px #ff4444;
           }
           100% {
-            text-shadow: 0 0 25px #FF0000, 0 0 40px #880000;
+            text-shadow: 0 0 25px #ff0000, 0 0 40px #880000;
           }
         }
         @keyframes gradient-move {

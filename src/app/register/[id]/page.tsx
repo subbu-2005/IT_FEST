@@ -4,14 +4,20 @@ import { useState, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+import "react-toastify/dist/ReactToastify.css";
+
+type Participant = {
+  name: string;
+  class: string;
+  contact: string;
+};
 
 const teams = [
   "Team Alpha", "Team Beta", "Team Gamma", "Team Delta", "Team Epsilon", 
   "Team Zeta", "Team Eta", "Team Theta", "Team Iota", "Team Kappa"
 ];
 
-const eventDetails = {
+const eventDetails: Record<string, number> = {
   "Treasure Hunt": 4,
   "IT Brand Rangoli": 2,
   "Quiz": 2,
@@ -26,26 +32,31 @@ const eventDetails = {
 };
 
 export default function RegisterPage() {
-  const [selectedTeam, setSelectedTeam] = useState("");
-  const [selectedEvent, setSelectedEvent] = useState("");
-  const [participants, setParticipants] = useState(0);
-  const [participantData, setParticipantData] = useState([]);
-  const canvasRef = useRef(null);
+  const [selectedTeam, setSelectedTeam] = useState<string>("");
+  const [selectedEvent, setSelectedEvent] = useState<string>("");
+  const [participants, setParticipants] = useState<number>(0);
+  const [participantData, setParticipantData] = useState<Participant[]>([]);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const handleEventChange = (event) => {
+  const handleEventChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedEvent = event.target.value;
     setSelectedEvent(selectedEvent);
-    setParticipants(eventDetails[selectedEvent] || 0);
-    setParticipantData(Array(eventDetails[selectedEvent]).fill({ name: "", class: "", contact: "" }));
+    const count = eventDetails[selectedEvent] || 0;
+    setParticipants(count);
+    setParticipantData(Array(count).fill({ name: "", class: "", contact: "" }));
   };
 
-  const handleParticipantChange = (index, field, value) => {
+  const handleParticipantChange = (
+    index: number,
+    field: keyof Participant,
+    value: string
+  ) => {
     const updatedParticipants = [...participantData];
     updatedParticipants[index] = { ...updatedParticipants[index], [field]: value };
     setParticipantData(updatedParticipants);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedTeam || !selectedEvent) {
       alert("Please select both a team and an event.");
@@ -67,8 +78,6 @@ export default function RegisterPage() {
 
       if (response.ok) {
         toast.success("🎉 Registration Successful!", { position: "top-right", autoClose: 3000 });
-        
-        // Reset fields after success
         setSelectedTeam("");
         setSelectedEvent("");
         setParticipants(0);
@@ -84,7 +93,7 @@ export default function RegisterPage() {
 
   return (
     <div className="relative min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 overflow-hidden">
-      <ToastContainer /> {/* Toast container for notifications */}
+      <ToastContainer />
 
       <Canvas className="absolute top-0 left-0 w-full h-full -z-10">
         <Stars radius={100} depth={50} count={5000} factor={4} fade speed={2} />
@@ -93,24 +102,24 @@ export default function RegisterPage() {
 
       <div className="bg-gray-900 p-6 rounded-lg shadow-xl w-full max-w-lg relative z-10 border-2 border-red-500 animate-glow">
         <h1 className="text-3xl font-bold mb-4 text-red-500">Event Registration</h1>
-        
+
         <label className="block mb-2">Select Your Team:</label>
         <select
           value={selectedTeam}
           onChange={(e) => setSelectedTeam(e.target.value)}
-          className="w-full p-2 bg-gray-800 border border-red-500 rounded-md focus:ring-red-500 focus:border-red-500"
+          className="w-full p-2 bg-gray-800 border border-red-500 rounded-md"
         >
           <option value="">-- Select Team --</option>
           {teams.map((team, index) => (
             <option key={index} value={team}>{team}</option>
           ))}
         </select>
-        
+
         <label className="block mt-4 mb-2">Select Event:</label>
         <select
           value={selectedEvent}
           onChange={handleEventChange}
-          className="w-full p-2 bg-gray-800 border border-red-500 rounded-md focus:ring-red-500 focus:border-red-500"
+          className="w-full p-2 bg-gray-800 border border-red-500 rounded-md"
         >
           <option value="">-- Select Event --</option>
           {Object.keys(eventDetails).map((event, index) => (

@@ -4,20 +4,28 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { eventsData } from "@/data/eventsData";
 import Link from "next/link";
+import Image from "next/image";
+
+type EventType = {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  rules: string[];
+  organizers: { name: string; contact: string }[];
+};
 
 export default function EventDetailPage() {
-  const params = useParams(); // params is now a Promise
+  const params = useParams();
   const [eventId, setEventId] = useState<string | null>(null);
-  const [event, setEvent] = useState<any>(null);
+  const [event, setEvent] = useState<EventType | null>(null);
 
-  // Unwrap params using useEffect
   useEffect(() => {
-    if (params.id) {
+    if (params?.id) {
       setEventId(params.id as string);
     }
   }, [params]);
 
-  // Get event data when eventId is set
   useEffect(() => {
     if (eventId) {
       const foundEvent = eventsData.find((e) => e.id === Number(eventId));
@@ -33,7 +41,13 @@ export default function EventDetailPage() {
     <div className="min-h-screen bg-black text-white flex flex-col items-center py-10 px-4">
       <h1 className="text-5xl font-bold text-red-500 mb-6">{event.title}</h1>
 
-      <img src={event.image} alt={event.title} className="w-full max-w-2xl h-80 object-cover rounded-lg shadow-lg mb-6" />
+      <Image
+        src={event.image}
+        alt={event.title}
+        width={800}
+        height={320}
+        className="w-full max-w-2xl h-80 object-cover rounded-lg shadow-lg mb-6"
+      />
 
       <p className="text-lg text-gray-300 text-center max-w-2xl">{event.description}</p>
 
@@ -55,7 +69,6 @@ export default function EventDetailPage() {
         ))}
       </div>
 
-      {/* 🔥 ADD REGISTER BUTTON */}
       <Link href={`/register/${eventId}`}>
         <button className="mt-6 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg">
           Register Now
