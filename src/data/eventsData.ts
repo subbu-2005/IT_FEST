@@ -10,8 +10,8 @@ export const eventsData = [
         "No external help or pre-written code is allowed.",
       ],
       organizers: [
-        { name: "Ashiq", contact :"+91 9876543210" },
-        { name: "", contact: "+91 8765432109" },
+        { name: " Muhammed Ashiq", contact :"+91 9538606738" },
+        { name: "abdul rahib", contact: "+91 9980452841" },
       ],
     },
     {
@@ -25,14 +25,15 @@ export const eventsData = [
         "Complete the exercises to get a certificate.",
       ],
       organizers: [
-        { name: "Alice Johnson", contact: "+91 7654321098" },
-        { name: "Bob Williams", contact: "+91 6543210987" },
+        { name: "Jiya c poojary", contact: "+91  7899314595" },
+        { name: "Navya ", contact: "+91 63605 91948" },
       ],
     },
     {
       id: 3,
       title: "BGMI Tournament",
       image: "/images/events/bgmi.jpg",
+      
       description: "Battle it out!",
       rules: [
         "Solo and squad matches available.",
@@ -40,15 +41,15 @@ export const eventsData = [
         "Follow the game rules and ethics.",
       ],
       organizers: [
-        { name: "Chris Martin", contact: "+91 5432109876" },
-        { name: "Emily Davis", contact: "+91 4321098765" },
+        { name: "Mahaveer ", contact: "+91 9663572647" },
+        { name: "Anvith Shankara Salian", contact: "+91  9148731262" },
       ],
     },
 
 
     {
         id: 4,
-        title: "IT Brand Rangoli",
+        title: "Rangitaranga (it Brand Rangoli)",
         image: "/images/events/bgmi.jpg",
         description: "Battle it out!",
         rules: [
@@ -57,8 +58,8 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Devika.G.shetty", contact: "+91 9108416040" },
+          { name: "Smitha Acharaya", contact: "+91 9741818688" },
         ],
       },
 
@@ -73,8 +74,8 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Bhavith Salian", contact: "+91 72591 85605" },
+          { name: "lathish Salian", contact: "+91 77952 88018" },
         ],
       },
       {
@@ -88,8 +89,8 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Vion Macquin Mathias", contact: "+91 5432109876" },
+          { name: "Rimona Machado", contact: "+91 96868 14722" },
         ],
       },
       {
@@ -103,8 +104,10 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Adithya Veerendra", contact: " 99456 98112" },
+          { name: "Ashwath prabhu", contact: "9663572647" },
+          { name: "Mahaveer Jain", contact: "+91  81233 20861" },
+          { name: "Prathiksha Devadiga", contact: "+91 0000000000" },
         ],
       },
 
@@ -119,8 +122,8 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Shwetha", contact: "+91  78991 20948" },
+          { name: " Harshitha rai", contact: "+91 8762156785" },
         ],
       },
 
@@ -137,8 +140,8 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Shreya  Shetty", contact: "+91  8147837045" },
+          { name: "Swathi", contact: "+91   86180 52916" },
         ],
       },
 
@@ -155,8 +158,8 @@ export const eventsData = [
           "Follow the game rules and ethics.",
         ],
         organizers: [
-          { name: "Chris Martin", contact: "+91 5432109876" },
-          { name: "Emily Davis", contact: "+91 4321098765" },
+          { name: "Tarannum Sheikh", contact: "+91 9740732650" },
+          { name: "Shravya Sonika", contact: "+91  7483928663" },
         ],
       },
 

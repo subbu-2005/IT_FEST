@@ -1,4 +1,3 @@
-// filepath: c:\Users\subra\Desktop\it_fest\src\components\Navbar.tsx
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,8 +11,8 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 w-full bg-red-900 bg-opacity-90 backdrop-blur-lg z-50">
       <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
         {/* Logo */}
-        <div className="text-2xl font-bold text-white">
-          <Link href="/">IT_FEST</Link>
+        <div className="flex-shrink-0 text-lg sm:text-xl md:text-2xl font-bold text-white truncate">
+          <Link href="/">SPECTROPHIA</Link>
         </div>
 
         {/* Desktop Navigation */}
@@ -28,9 +27,10 @@ export default function Navbar() {
               About
             </Link>
           </li>
+         
           <li>
-            <Link href="/registration" className="hover:text-yellow-400 hover:drop-shadow-lg transition-all duration-300">
-              Register
+            <Link href="/adminlogin" className="hover:text-yellow-400 hover:drop-shadow-lg transition-all duration-300 font-semibold">
+              Admin Login
             </Link>
           </li>
         </ul>
@@ -70,9 +70,10 @@ export default function Navbar() {
                   About
                 </Link>
               </li>
+             
               <li>
-                <Link href="/registration" onClick={() => setIsOpen(false)} className="text-lg font-semibold hover:text-yellow-400 transition-all duration-300">
-                  Register
+                <Link href="/adminlogin" onClick={() => setIsOpen(false)} className="text-lg font-semibold hover:text-yellow-400 transition-all duration-300">
+                  Admin Login
                 </Link>
               </li>
             </ul>
