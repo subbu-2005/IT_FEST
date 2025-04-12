@@ -1,187 +1,271 @@
 "use client";
+
+
+
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Stars,
-  Points,
-  PointMaterial,
-  Ring,
-} from "@react-three/drei";
-import { useMemo, useRef } from "react";
-import {
-  EffectComposer,
-  Bloom,
-  Noise,
-  ChromaticAberration,
-  Vignette,
-} from "@react-three/postprocessing";
+
+import { OrbitControls, useGLTF, Environment, Stars } from "@react-three/drei";
+
 import * as THREE from "three";
+
+import React, { Suspense, useEffect, useRef } from "react";
+
 import Navbar from "@/components/Navbar";
 
-// ✨ Swirling Particles
-function SwirlingParticles() {
-  const ref = useRef<THREE.Points>(null);
-  const positions = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < 1000; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const radius = Math.random() * 5 + 2;
-      const y = (Math.random() - 0.5) * 5;
-      const x = Math.cos(angle) * radius;
-      const z = Math.sin(angle) * radius;
-      arr.push(x, y, z);
-    }
-    return new Float32Array(arr);
-  }, []);
 
-  useFrame(({ clock }) => {
+
+// 🎵 Dancing Model Component
+
+function Model({ modelPath, position }: { modelPath: string; position: [number, number, number] }) {
+
+  const { scene } = useGLTF(modelPath);
+
+  const ref = useRef<THREE.Group>(null);
+
+  const clockRef = useRef(new THREE.Clock());
+
+
+
+  useEffect(() => {
+
+    // Restore original materials and color
+
+    scene.traverse((child: any) => {
+
+      if (child.isMesh) {
+
+        child.material.metalness = 0.5;
+
+        child.material.roughness = 0.3;
+
+        child.material.emissive = new THREE.Color(0x222222);
+
+        child.material.emissiveIntensity = 0.2;
+
+      }
+
+    });
+
+  }, [scene]);
+
+
+
+  useFrame(() => {
+
+    const t = clockRef.current.getElapsedTime();
+
     if (ref.current) {
-      ref.current.rotation.y = clock.getElapsedTime() * 0.15;
+
+      // 💃 Dancing motions
+
+      ref.current.rotation.y = Math.sin(t * 2) * 0.3; // Left-right groove
+
+      ref.current.rotation.x = Math.sin(t) * 0.1; // Head nod
+
+      ref.current.position.y = position[1] + Math.abs(Math.sin(t * 2)) * 0.15; // Bounce
+
     }
+
   });
 
-  return (
-    <Points ref={ref} positions={positions} frustumCulled={false}>
-      <PointMaterial size={0.1} color="#ff0066" transparent opacity={0.9} />
-    </Points>
-  );
-}
 
-// 🔴 Floating Red Dots
-function FloatingRedDots() {
-  const pointsRef = useRef<THREE.Points>(null);
-
-  useFrame(({ clock }) => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.05;
-    }
-  });
-
-  const dots = useMemo(() => {
-    const dotsArray = [];
-    for (let i = 0; i < 1500; i++) {
-      const x = (Math.random() - 0.5) * 10;
-      const y = (Math.random() - 0.5) * 10;
-      const z = (Math.random() - 0.5) * 10;
-      dotsArray.push(x, y, z);
-    }
-    return new Float32Array(dotsArray);
-  }, []);
 
   return (
-    <Points ref={pointsRef} positions={dots} frustumCulled={false}>
-      <PointMaterial size={0.08} color="#FF0000" transparent opacity={0.9} />
-    </Points>
+
+    <group ref={ref}>
+
+      <primitive object={scene} position={position} scale={[0.23, 0.23, 0.23]} />
+
+    </group>
+
   );
+
 }
 
-// 🌀 Glowing Vortex Ring
-function VortexRing() {
-  const ringRef = useRef<THREE.Mesh>(null);
 
-  useFrame(({ clock }) => {
-    if (ringRef.current) {
-      ringRef.current.rotation.z = clock.getElapsedTime() * 0.4;
-    }
-  });
 
-  return (
-    <Ring
-      ref={ringRef}
-      args={[2, 2.5, 64]}
-      position={[0, 0, -2]}
-      rotation={[Math.PI / 2, 0, 0]}
-    >
-      <meshBasicMaterial
-        color="#ff0044"
-        transparent
-        opacity={0.6}
-        side={THREE.DoubleSide}
-      />
-    </Ring>
-  );
-}
+// 🏠 Main Home Page
 
-// 🎬 Main Component
 export default function Home() {
+
   return (
-    <main className="relative h-screen w-full bg-black overflow-hidden">
+
+    <main className="relative h-screen w-full overflow-hidden">
+
       <Navbar />
 
-      <Canvas className="absolute inset-0 z-0">
-        <OrbitControls enableZoom={false} />
-        <ambientLight intensity={0.5} />
-        <pointLight position={[5, 5, 5]} intensity={3} color="#FF00CC" />
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={1} fade />
-        <FloatingRedDots />
-        <SwirlingParticles />
-        <VortexRing />
-        <EffectComposer>
-          <Bloom intensity={3.5} luminanceThreshold={0.1} luminanceSmoothing={0.7} />
-          <Noise opacity={0.25} />
-          <ChromaticAberration offset={[0.003, 0.004]} />
-          <Vignette eskil={false} offset={0.3} darkness={1.1} />
-        </EffectComposer>
+
+
+      <Canvas className="absolute inset-0 z-0" camera={{ position: [0, 0, 5], fov: 50 }}>
+
+        <Suspense fallback={null}>
+
+          <Stars
+
+            radius={100}
+
+            depth={80}
+
+            count={1000}
+
+            factor={6}
+
+            saturation={0}
+
+            fade
+
+            speed={1}
+
+          />
+
+          <OrbitControls enableZoom={false} enableRotate={true} />
+
+          <ambientLight intensity={0.6} />
+
+          <pointLight position={[5, 5, 5]} intensity={1.5} color="#ffffff" />
+
+          <Environment preset="sunset" />
+
+          <Model modelPath="/models/model7.glb" position={[0, -0.5, 0]} />
+
+        </Suspense>
+
       </Canvas>
 
-      {/* Center Text with Glow */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 px-4">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 animate-gradient">
+
+
+      {/* Title & Tagline */}
+
+      <div className="absolute top-[35%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 px-4">
+
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-600 animate-gradient">
+
           <span className="animate-glow-white">SPECTROPHIA</span>
-          <span className="animate-glow-red text-red-500">&apos;25</span> {/* Escaped single quote */}
+
+          <span className="animate-glow-red text-red-500">'25</span>
+
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl mt-4 text-gray-300">
+
+        <p className="text-lg sm:text-xl md:text-2xl mt-4 text-gray-200">
+
           Unleash the Spectrum of Innovation
+
         </p>
+
       </div>
 
-      {/* Advanced Animations */}
+
+
+      {/* Animations */}
+
       <style jsx>{`
+
         @keyframes glow-white {
+
           0% {
+
             text-shadow: 0 0 20px #ffffff, 0 0 40px #aaaaaa;
+
           }
+
           50% {
+
             text-shadow: 0 0 40px #ffffff, 0 0 60px #ffffff;
+
           }
+
           100% {
+
             text-shadow: 0 0 20px #ffffff, 0 0 40px #aaaaaa;
+
           }
+
         }
+
         @keyframes glow-red {
+
           0% {
+
             text-shadow: 0 0 25px #ff0000, 0 0 40px #880000;
+
           }
+
           50% {
+
             text-shadow: 0 0 50px #ff0000, 0 0 60px #ff4444;
+
           }
+
           100% {
+
             text-shadow: 0 0 25px #ff0000, 0 0 40px #880000;
+
           }
+
         }
+
         @keyframes gradient-move {
+
           0% {
+
             background-position: 0% 50%;
+
           }
+
           50% {
+
             background-position: 100% 50%;
+
           }
+
           100% {
+
             background-position: 0% 50%;
+
           }
+
         }
+
         .animate-glow-white {
+
           animation: glow-white 1.5s infinite alternate;
+
           color: white;
+
         }
+
         .animate-glow-red {
+
           animation: glow-red 1.5s infinite alternate;
+
         }
+
         .animate-gradient {
+
           background-size: 200% 200%;
+
           animation: gradient-move 4s ease infinite;
+
         }
+
       `}</style>
+
+
+
+      <style jsx global>{`
+
+        body {
+
+          background: #000000;
+
+          transition: background 0.5s ease-in-out;
+
+        }
+
+      `}</style>
+
     </main>
+
   );
+
 }
