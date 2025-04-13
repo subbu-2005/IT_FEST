@@ -1,7 +1,7 @@
 'use client';
 
 import Image from "next/image";
-import { FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaGithub,  FaInstagram } from "react-icons/fa";
 import { useEffect } from "react";
 
 export default function AboutPage() {
@@ -78,7 +78,7 @@ export default function AboutPage() {
             className="rounded-lg object-cover w-full md:w-1/2 border-4 border-blue-500 shadow-lg"
           />
           <p className="text-lg leading-relaxed text-gray-300">
-            St Mary's College Shirva
+          St Mary&apos;s College Shirva
             <br />
             Welcome to <span className="text-blue-400 font-semibold">Spectrophia</span> – the annual IT Fest of the <strong>BCA Department</strong>. Join us for a celebration of innovation, creativity, and technology, organized by the minds shaping tomorrow.
           </p>
@@ -163,7 +163,7 @@ export default function AboutPage() {
           </a>
           </center>
           <br />
-          Best College we got ❤️❤️..
+            <p>Best College we got ❤️❤️..</p>
         
         
         </footer>
