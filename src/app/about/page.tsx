@@ -24,7 +24,7 @@ export default function AboutPage() {
     "Navya",
     "Devika Shetty",
     "Tarannum Sheikh",
-    "Shravya Sonika",
+    "Ayisha",
     "Bhavith Poojary",
     "Akash Acharya",
     "Manoli Mahaveer",
