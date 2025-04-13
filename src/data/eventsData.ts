@@ -2,7 +2,7 @@ export const eventsData = [
     {
       id: 1,
       title: "Kode Geek Force(coding)",
-      image: "/images/events/screenshot.png",
+      image: "/images/events/kgf.jpg",
       description: "Code and compete!",
       rules: [
      "1️⃣ This is a 2-round coding event:",  
