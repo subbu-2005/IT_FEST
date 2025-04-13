@@ -6,7 +6,7 @@ import Link from "next/link";
 import * as THREE from "three";
 
 const events = [
-  { id: 1, title: "KGF(KODE GEEK FORCE)", image: "/images/events/screenshot.png", description: "Code and compete!" },
+  { id: 1, title: "KGF(KODE GEEK FORCE)", image: "/images/events/Screenshot.png", description: "Code and compete!" },
   { id: 2, title: "INVICTUS(soft interview)", image: "/images/events/web.jpg", description: "Unleash your skills." },
   { id: 3, title: "Death Race", image: "/images/events/bgmi.jpg", description: "Chikken Dinner." },
   { id: 4, title: "Inception(Power Point presentation)", image: "/images/events/inception.jpg", description: "Be confident." },
@@ -14,9 +14,9 @@ const events = [
   { id: 6, title: "Ready Player One", image: "/images/events/ready.png", description: "Welcome to the jungle." },
   { id: 7, title: "Fight Club", image: "/images/events/ff.jpg", description: "We can't talk about it." },
   { id: 8, title: "Furiosa(gaming Girls)", image: "/images/events/fur.jpg", description: "The new saga." },
-  { id: 9, title: "Shutter island(photography)", image: "/images/events/shut.jpg", description: "Capture the moment." },
+  { id: 9, title: "Shutter island(photography)", image: "/images/events/Shut.jpg", description: "Capture the moment." },
   { id: 10, title: "Bladerunner(video editing)", image: "/images/events/video.jpg", description: "Use creative editing skills." },
-  { id: 11, title: "Rangitaranga", image: "/images/events/dark.png", description: "Festival of colours." }
+  { id: 11, title: "Rangitaranga", image: "/images/events/Dark.png", description: "Festival of colours." }
 ];
 
 export default function EventsPage() {

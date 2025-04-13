@@ -2,7 +2,7 @@ export const eventsData = [
     {
       id: 1,
       title: "Kode Geek Force(coding)",
-      image: "/images/events/kgf.jpg",
+      image: "/images/events/Screenshot.png",
       description: "Code and compete!",
       rules: [
      "1️⃣ This is a 2-round coding event:",  
@@ -173,7 +173,7 @@ export const eventsData = [
       {
         id: 9,
         title: "Shutter Island (photography)",
-        image: "/images/events/shut.jpg",
+        image: "/images/events/Shut.jpg",
         description: "Capture the Movement",
         rules: [
        "Round 1: Photo Capture",
@@ -215,7 +215,7 @@ export const eventsData = [
       {
         id: 11,
         title: "Rangitaranaga (it brand rangoli)",
-        image: "/images/events/dark.png",
+        image: "/images/events/Dark.png",
         description: "lets colour the world",
         rules: [
           "Two members make a team",

@@ -27,7 +27,7 @@ export default function AboutPage() {
     "Ayisha",
     "Bhavith Poojary",
     "Akash Acharya",
-    "Manoli Mahaveer",
+    
   ];
 
   useEffect(() => {
