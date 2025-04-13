@@ -78,7 +78,7 @@ export const eventsData = [
         ],
         organizers: [
           { name: "Tarannum Sheikh", contact: "+91 9740732650" },
-          { name: "Shravya Sonika", contact: "+91  7483928663" },
+          { name: "Aiysha ", contact: "+91 98804 04021" },
         ],
       },
 
