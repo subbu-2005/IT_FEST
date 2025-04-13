@@ -2,7 +2,7 @@ export const eventsData = [
     {
       id: 1,
       title: "Kode Geek Force(coding)",
-      image: "/images/events/Screenshot.png",
+      image: "/images/events/kgf.jpg",
       description: "Code and compete!",
       rules: [
      "1️⃣ This is a 2-round coding event:",  
@@ -57,7 +57,7 @@ export const eventsData = [
         "Event heads decisons are final",
       ],
       organizers: [
-        { name: "Mahaveer ", contact: "+91 9663572647" },
+        { name: "Mahaveer jain", contact: "+91 9663572647" },
         { name: "Anvith Shankara Salian", contact: "+91  9148731262" },
       ],
     },
@@ -121,7 +121,7 @@ export const eventsData = [
         ],
         organizers: [
           { name: "Adithya Veerendra", contact: " 99456 98112" },
-          { name: "Ashwath prabhu", contact: "9663572647" },
+          { name: "Ashwath prabhu", contact: "+91 81233 20861" },
           { name: "Mahaveer Jain", contact: "+91  81233 20861" },
           { name: "Prathiksha Devadiga", contact: "+91 81471 00763" },
         ],

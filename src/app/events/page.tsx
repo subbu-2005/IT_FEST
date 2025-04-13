@@ -6,7 +6,7 @@ import Link from "next/link";
 import * as THREE from "three";
 
 const events = [
-  { id: 1, title: "KGF(KODE GEEK FORCE)", image: "/images/events/Screenshot.png", description: "Code and compete!" },
+  { id: 1, title: "KGF(KODE GEEK FORCE)", image: "/images/events/kgf.jpg", description: "Code and compete!" },
   { id: 2, title: "INVICTUS(soft interview)", image: "/images/events/web.jpg", description: "Unleash your skills." },
   { id: 3, title: "Death Race", image: "/images/events/bgmi.jpg", description: "Chikken Dinner." },
   { id: 4, title: "Inception(Power Point presentation)", image: "/images/events/inception.jpg", description: "Be confident." },
