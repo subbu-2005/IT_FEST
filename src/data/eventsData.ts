@@ -122,7 +122,7 @@ export const eventsData = [
         organizers: [
           { name: "Adithya Veerendra", contact: " 99456 98112" },
           { name: "Ashwath prabhu", contact: "+91 81233 20861" },
-          { name: "Mahaveer Jain", contact: "+91  81233 20861" },
+          { name: "Mahaveer Jain", contact: " +91 96635 72647" },
           { name: "Prathiksha Devadiga", contact: "+91 81471 00763" },
         ],
       },
