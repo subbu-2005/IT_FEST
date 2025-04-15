@@ -104,7 +104,7 @@ export const eventsData = [
 
       {
         id: 6,
-        title: "Ready Player One(trusure hunt)",
+        title: "Ready Player One(treasure hunt)",
         image: "/images/events/ready.png",
         description: "hunbbt for Quest",
         rules: [
