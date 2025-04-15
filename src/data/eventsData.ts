@@ -106,7 +106,7 @@ export const eventsData = [
         id: 6,
         title: "Ready Player One(treasure hunt)",
         image: "/images/events/ready.png",
-        description: "hunbbt for Quest",
+        description: "hunt for Quest",
         rules: [
              "Each team must have 2 to 4 members, Each team must select a team leader to coordinate and communicate.",
              "All teams will begin at the designated starting location, Teams will receive the first clue at the start.",
