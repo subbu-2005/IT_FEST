@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import * as THREE from "three";
@@ -20,17 +20,57 @@ const events = [
 ];
 
 export default function EventsPage() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [visibleIndex, setVisibleIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const mountRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const handleScroll = () => {
+      const container = containerRef.current;
+      if (!container) return;
+
+      const cards = container.querySelectorAll(".event-card");
+      let closestIndex = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+        const distance = Math.abs(viewportCenter - cardCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      // Special case: top of page
+      if (window.scrollY === 0) {
+        setVisibleIndex(0);
+        return;
+      }
+
+      // Special case: bottom of page
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+
+      if (scrollBottom >= docHeight - 5) {
+        setVisibleIndex(events.length - 1);
+        return;
+      }
+
+      setVisibleIndex(closestIndex);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, document.body.scrollHeight);
     renderer.domElement.style.position = "absolute";
@@ -39,9 +79,7 @@ export default function EventsPage() {
     renderer.domElement.style.zIndex = "-1";
 
     const currentMountRef = mountRef.current;
-    if (currentMountRef) {
-      currentMountRef.appendChild(renderer.domElement);
-    }
+    currentMountRef?.appendChild(renderer.domElement);
 
     const ambientLight = new THREE.AmbientLight(0x00ffff, 2);
     scene.add(ambientLight);
@@ -50,18 +88,17 @@ export default function EventsPage() {
     pointLight.position.set(0, 0, 10);
     scene.add(pointLight);
 
-    // Torus
-    const torusGeometry = new THREE.TorusGeometry(3.5, 0.5, 16, 100);
-    const torusMaterial = new THREE.MeshStandardMaterial({
-      color: 0x00ffff,
-      emissive: 0x0099ff,
-      emissiveIntensity: 0.8,
-      wireframe: true,
-    });
-    const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+    const torus = new THREE.Mesh(
+      new THREE.TorusGeometry(3.5, 0.5, 16, 100),
+      new THREE.MeshStandardMaterial({
+        color: 0x00ffff,
+        emissive: 0x0099ff,
+        emissiveIntensity: 0.8,
+        wireframe: true
+      })
+    );
     scene.add(torus);
 
-    // Glowing Aqua-blue Square Particles
     const squaresGroup = new THREE.Group();
     const squareGeometry = new THREE.PlaneGeometry(0.5, 0.5);
     const squareMaterial = new THREE.MeshBasicMaterial({
@@ -73,81 +110,54 @@ export default function EventsPage() {
 
     for (let i = 0; i < 200; i++) {
       const square = new THREE.Mesh(squareGeometry, squareMaterial);
-      square.position.set(
-        (Math.random() - 0.5) * 80,
-        (Math.random() - 0.5) * 80,
-        (Math.random() - 0.5) * 80
-      );
+      square.position.set((Math.random() - 0.5) * 80, (Math.random() - 0.5) * 80, (Math.random() - 0.5) * 80);
       square.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
       squaresGroup.add(square);
     }
-
     scene.add(squaresGroup);
 
-    // Stars
     const starGeometry = new THREE.BufferGeometry();
-    const starCount = 300;
-    const starPositions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount * 3; i++) {
-      starPositions[i] = (Math.random() - 0.5) * 100;
-    }
+    const starPositions = new Float32Array(300 * 3);
+    for (let i = 0; i < 900; i++) starPositions[i] = (Math.random() - 0.5) * 100;
     starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
-    const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, transparent: true, opacity: 0.8 });
-    const stars = new THREE.Points(starGeometry, starMaterial);
+    const stars = new THREE.Points(
+      starGeometry,
+      new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, transparent: true, opacity: 0.8 })
+    );
     scene.add(stars);
-
-    // Sphere
-    const sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
-    const sphereMaterial = new THREE.MeshStandardMaterial({ color: 0x0000ff, emissive: 0x0033ff, wireframe: true });
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    sphere.position.set(-10, 0, -10);
-    scene.add(sphere);
-
-    // Pyramid
-    const pyramidGeometry = new THREE.ConeGeometry(2, 4, 4);
-    const pyramidMaterial = new THREE.MeshStandardMaterial({ color: 0x5500ff, emissive: 0x2200ff, wireframe: true });
-    const pyramid = new THREE.Mesh(pyramidGeometry, pyramidMaterial);
-    pyramid.position.set(10, 5, -15);
-    scene.add(pyramid);
-
-    camera.position.z = 6;
 
     const animate = () => {
       requestAnimationFrame(animate);
       torus.rotation.x += 0.01;
       torus.rotation.y += 0.01;
       stars.rotation.y += 0.0005;
-      sphere.rotation.y += 0.005;
-      sphere.rotation.x += 0.005;
-      pyramid.rotation.y -= 0.004;
       squaresGroup.rotation.y += 0.001;
       squaresGroup.rotation.x += 0.001;
       renderer.render(scene, camera);
     };
     animate();
 
-    const handleScroll = () => {
+    window.addEventListener("scroll", () => {
       camera.position.y = window.scrollY * 0.005;
-    };
-    window.addEventListener("scroll", handleScroll);
+    });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       scene.clear();
       renderer.dispose();
+      window.removeEventListener("scroll", () => {});
       currentMountRef?.removeChild(renderer.domElement);
     };
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
+    <div className="relative min-h-screen bg-black text-white overflow-hidden pb-20">
       <div ref={mountRef} className="absolute top-0 left-0 w-full h-full z-0" />
 
       <motion.h1
         className="relative z-10 text-5xl font-extrabold text-cyan-400 text-center mt-8 drop-shadow-[0_0_15px_#00ffff]"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8 }}
       >
         ALL EVENTS
       </motion.h1>
@@ -163,54 +173,29 @@ export default function EventsPage() {
         </Link>
       </div>
 
-      <div className="relative z-10 flex flex-wrap justify-center items-center gap-6 pt-10 px-4">
-        {events.map((event) => (
-          <Link key={event.id} href={`/events/${event.id}`} passHref>
-            <motion.div
-              className="relative w-64 h-80 bg-gray-900 rounded-2xl border-4 border-cyan-400 shadow-2xl overflow-hidden cursor-pointer card-spin"
-              onMouseEnter={() => setHoveredId(event.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              <motion.img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-full object-cover"
-                animate={{ opacity: hoveredId === event.id ? 0.5 : 1 }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: hoveredId === event.id ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <h3 className="text-xl font-bold text-cyan-400 drop-shadow-[0_0_10px_#00ffff]">
-                  {event.title}
-                </h3>
-                <p className="text-sm text-gray-300 px-4 text-center">{event.description}</p>
-                <span className="mt-4 text-white border border-cyan-400 px-4 py-2 rounded-md hover:bg-cyan-500 transition">
-                  View Details
-                </span>
-              </motion.div>
-            </motion.div>
-          </Link>
-        ))}
+      <div ref={containerRef} className="relative z-10 flex flex-col items-center gap-12 pt-10">
+        {events.map((event, index) => {
+          const isVisible = index === visibleIndex;
+          return (
+            <Link key={event.id} href={`/events/${event.id}`} passHref>
+              <div className="event-card w-72 h-96 rounded-2xl shadow-lg relative [perspective:1000px] cursor-pointer">
+                <div
+                  className={`w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
+                    isVisible ? "" : "rotate-y-180"
+                  }`}
+                >
+                  <div className="absolute w-full h-full backface-hidden rounded-2xl overflow-hidden">
+                    <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="absolute w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden">
+                    <img src="/images/events/card.png" alt="Card Back" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
-
-      <style jsx>{`
-        .card-spin {
-          animation: spinCard 10s linear infinite;
-        }
-
-        @keyframes spinCard {
-          from {
-            transform: rotateY(0deg);
-          }
-          to {
-            transform: rotateY(360deg);
-          }
-        }
-      `}</style>
     </div>
   );
 }

@@ -36,6 +36,7 @@ export const eventsData = [
         " There will be 20 multiple choice questions. ",
         "Time alloted for the questions is 20 minutes.",
         "We will filter out 5 teams who scores highest mark and they will qualify for the next round. ",
+        "Round 2: Panel Interview."
       ],
       organizers: [
         { name: "Shwetha", contact: "+91  7899120948" },
@@ -78,7 +79,7 @@ export const eventsData = [
         ],
         organizers: [
           { name: "Tarannum Sheikh", contact: "+91 9740732650" },
-          { name: "Aiysha ", contact: "+91 98804 04021" },
+          { name: "Aiysha  Sheikh", contact: "+91 98804 04021" },
         ],
       },
 

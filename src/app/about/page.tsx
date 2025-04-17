@@ -24,9 +24,11 @@ export default function AboutPage() {
     "Navya",
     "Devika Shetty",
     "Tarannum Sheikh",
-    "Ayisha",
+    "Aiysha Sheikh",
     "Bhavith Poojary",
     "Akash Acharya",
+    "Harshitha Rai",
+    "Shwetha"
     
   ];
 
