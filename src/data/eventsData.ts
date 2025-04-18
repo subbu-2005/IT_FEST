@@ -65,24 +65,23 @@ export const eventsData = [
 
 
     {
-        id: 4,
-        title: "Inception(ppt)",
-        image: "/images/events/inception.jpg",
-        description: "ENHANCE YOUR CONFIDENCE",
-        rules: [
-          "Individual participation only.",
-          "Prepare a PowerPoint presentation (min. 8 slides) based on the given theme.",
-          "5 minutes per presentation. Warning bell at 4 minutes.",
-          " Submit your file in .ppt/.pptx format via USB or email.",
-          "- Judging criteria:   Presentation Skills  Slide Design & Visual Appeal   Time Management   Q&A Handling  ",
-          "Judges’ decision is final.  ",
-        ],
-        organizers: [
-          { name: "Tarannum Sheikh", contact: "+91 9740732650" },
-          { name: "Aiysha  Sheikh", contact: "+91 98804 04021" },
-        ],
-      },
-
+      id: 4,
+      title: "Inception(ppt)",
+      image: "/images/events/inception.jpg",
+      description: "ENHANCE YOUR CONFIDENCE",
+      rules: [
+        "Individual participation only.",
+        "Prepare a PowerPoint presentation (min. 8 slides) based on the given theme.",
+        "5 minutes per presentation. Warning bell at 4 minutes.",
+        " Submit your file in .ppt/.pptx format via USB or email.",
+        "Judging criteria:   Presentation Skills, Slide Design & Visual Appeal, Time Management, Q&A Handling  ",
+        "Judges’ decision is final.  ",
+      ],
+      organizers: [
+        { name: "Tarannum Sheikh", contact: "+91 9740732650" },
+        { name: "Aiysha  Sheikh", contact: "+91 98804 04021" },
+      ],
+    },
       {
         id: 5,
         title: "The Matrix(quiz)",
