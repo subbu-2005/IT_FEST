@@ -1,8 +1,9 @@
 'use client';
 
 import Image from "next/image";
-import { FaGithub,  FaInstagram } from "react-icons/fa";
+import { FaGithub, FaInstagram } from "react-icons/fa";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function AboutPage() {
   const organizers = [
@@ -14,8 +15,8 @@ export default function AboutPage() {
     "Abdul Rahib",
     "Nishanth T Shettigar",
     "Shravan Acharya",
-    "Vion Macqueen Mathias",
-    "Rimoona Machado",
+    "Vion Macquin Mathias",
+    "Rimona Machado",
     "Swathi",
     "Shreya Shetty",
     "Anvith S Salian",
@@ -28,9 +29,10 @@ export default function AboutPage() {
     "Bhavith Poojary",
     "Akash Acharya",
     "Harshitha Rai",
-    "Shwetha"
-    
+    "Shwetha",
   ];
+
+  const router = useRouter();
 
   useEffect(() => {
     const style = document.createElement("style");
@@ -49,6 +51,18 @@ export default function AboutPage() {
           text-shadow: 0 0 6px #3b82f6;
         }
       }
+
+      @keyframes buttonGlow {
+        0% {
+          box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+        }
+        50% {
+          box-shadow: 0 0 20px #3b82f6, 0 0 40px #3b82f6;
+        }
+        100% {
+          box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+        }
+      }
     `;
     document.head.appendChild(style);
     return () => {
@@ -58,6 +72,16 @@ export default function AboutPage() {
 
   return (
     <div className="bg-gray-900 text-white min-h-screen w-full font-sans overflow-x-hidden">
+      {/* Back to Home Button */}
+      <div className="relative z-20 p-6">
+        <button
+          onClick={() => router.push("/")}
+          className="px-6 py-3 bg-blue-800 text-white font-semibold rounded-lg  hover:scale-105 transition-transform duration-300"
+        >
+          Back to Home Page
+        </button>
+      </div>
+
       {/* Glowing Background Animations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
         <div className="absolute w-72 h-72 bg-blue-500 rounded-full opacity-47k animate-ping top-10 left-1/2 -translate-x-1/2"></div>
@@ -80,7 +104,7 @@ export default function AboutPage() {
             className="rounded-lg object-cover w-full md:w-1/2 border-4 border-blue-500 shadow-lg"
           />
           <p className="text-lg leading-relaxed text-gray-300">
-          St Mary&apos;s College Shirva
+            St Mary&apos;s College Shirva
             <br />
             Welcome to <span className="text-blue-400 font-semibold">Spectrophia</span> – the annual IT Fest of the <strong>BCA Department</strong>. Join us for a celebration of innovation, creativity, and technology, organized by the minds shaping tomorrow.
           </p>
@@ -152,24 +176,20 @@ export default function AboutPage() {
         </div>
 
         {/* Footer */}
-        
         <footer className="border-t border-gray-900 pt-6 text-center text-xl text-blue-200 space-x-6">
           <center>
-          <a
-            href="https://www.instagram.com/stmaryscollegeshirva?igsh=OWNyaG82eDN6OGd5"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white transition"
-          >
-            <FaInstagram />
-          </a>
+            <a
+              href="https://www.instagram.com/stmaryscollegeshirva?igsh=OWNyaG82eDN6OGd5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition"
+            >
+              <FaInstagram />
+            </a>
           </center>
           <br />
-            <p>Best College we got ❤️❤️..</p>
-        
-        
+          <p>Best College we got ❤️❤️..</p>
         </footer>
-
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 export const eventsData = [
     {
       id: 1,
-      title: "Kode Geek Force(coding)",
+      title: "Kode Geek Force (Code-Wars)",
       image: "/images/events/kgf.jpg",
-      description: "Code and compete!",
+      description: "🛡 Ultimate Battle Of Brains And Bytes ⚔",
       rules: [
      "1️⃣ This is a 2-round coding event:",  
 " • Round 1 – 🧠 Logic & Output-based MCQs",  
@@ -46,7 +46,7 @@ export const eventsData = [
     },
     {
       id: 3,
-      title: "Death Race(bgmi)",
+      title: "Death Race(BGMI)",
       image: "/images/events/bgmi.jpg",
       
       description: "Gear Up, Drop In, And Fight For the Glory in the Ultimate Battleground ",
@@ -68,7 +68,7 @@ export const eventsData = [
         id: 4,
         title: "Inception(ppt)",
         image: "/images/events/inception.jpg",
-        description: "enhance Your confidence",
+        description: "ENHANCE YOUR CONFIDENCE",
         rules: [
           "Individual participation only.",
           "Prepare a PowerPoint presentation (min. 8 slides) based on the given theme.",
@@ -87,7 +87,7 @@ export const eventsData = [
         id: 5,
         title: "The Matrix(quiz)",
         image: "/images/events/quiz.jpg",
-        description: "unleash your knowledge",
+        description: "ENHANCE YOUR KNOWLEDGE",
         rules: [
           "Round 1, * There will be multiple choice questions to answer",
           "*30min of time will be allotted to complete round1",
@@ -107,7 +107,7 @@ export const eventsData = [
         id: 6,
         title: "Ready Player One(treasure hunt)",
         image: "/images/events/ready.png",
-        description: "hunt for Quest",
+        description: "Hunt for Quest",
         rules: [
              "Each team must have 2 to 4 members, Each team must select a team leader to coordinate and communicate.",
              "All teams will begin at the designated starting location, Teams will receive the first clue at the start.",
@@ -118,7 +118,7 @@ export const eventsData = [
               "Respect Rules & Property.",
               "Do not damage any property or litter.",
               "Be respectful of the surroundings and others.",
-                "Tampering with the clues will lead to disqualification of entire team."
+              "Tampering with the clues will lead to disqualification of entire team."
         ],
         organizers: [
           { name: "Adithya Veerendra", contact: " 99456 98112" },
@@ -131,7 +131,7 @@ export const eventsData = [
         id: 7,
         title: "Fight Club(free fire)",
         image: "/images/events/ff.jpg",
-        description: " we cant alk about it",
+        description: " WE CAN'T TALK ABOUT IT",
         rules: [
           "Every team should consist of two players.",
           "Player must bring their own device.",
@@ -149,9 +149,9 @@ export const eventsData = [
       
       { 
         id: 8,
-        title: "Furiosa (mili militia)",
+        title: "Furiosa(Mini Militia)",
         image: "/images/events/fur.jpg",
-        description: "Go Girls!!!",
+        description: "ONE TEAN ONE FIGHT",
         rules: [
           "All teams must consist of 2 members exactly. ",
           "Each match shall be of 5 minutes.",
@@ -175,7 +175,7 @@ export const eventsData = [
         id: 9,
         title: "Shutter Island (photography)",
         image: "/images/events/Shut.jpg",
-        description: "Capture the Movement",
+        description: "Capture The Movement",
         rules: [
        "Round 1: Photo Capture",
        "Participants are required to capture photos throughout the IT Fest.",
@@ -195,7 +195,7 @@ export const eventsData = [
         id: 10,
         title: "Blade runner (video Editing)",
         image: "/images/events/video.jpg",
-        description: "Use creative  Editing skills",
+        description: "WHERE VISION MEETS THE LENS",
         rules: [
           " individual event ",
           "Participants should bring     their own mobile phone and laptops.",
@@ -215,9 +215,9 @@ export const eventsData = [
     
       {
         id: 11,
-        title: "Rangitaranaga (it brand rangoli)",
+        title: "Rangitaranaga (It Brand Rangoli)",
         image: "/images/events/Dark.png",
-        description: "lets colour the world",
+        description: "Lets colour the world",
         rules: [
           "Two members make a team",
           " There will be only one round ",
