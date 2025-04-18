@@ -207,8 +207,8 @@ export const eventsData = [
           " topic will be given on spot.",
         ],
         organizers: [
-          { name: "Vion Macquin Mathias", contact: "+91 5432109876" },
-          { name: "Rimona Machado", contact: "+91 9686814722" },
+          { name: "Vion Macquin Mathias", contact: "+91 7348984042" },
+          { name: "Rimona Jelin Machado", contact: "+91 9686814722" },
         ],
       },
      

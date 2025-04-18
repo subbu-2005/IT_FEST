@@ -16,7 +16,7 @@ export default function AboutPage() {
     "Nishanth T Shettigar",
     "Shravan Acharya",
     "Vion Macquin Mathias",
-    "Rimona Machado",
+    "Rimona  Jelin Machado",
     "Swathi",
     "Shreya Shetty",
     "Anvith S Salian",
