@@ -140,6 +140,7 @@ export const eventsData = [
         rules: [
           "Every team should consist of two players.",
           "Player must bring their own device.",
+          "players should download all maps",
           "Organiser are not responsible for network or server issues",
           "Using hack is strictly prohibited.",
           "Teaming  up with other team is prohibited.",
