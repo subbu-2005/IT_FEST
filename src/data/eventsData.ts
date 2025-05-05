@@ -64,24 +64,30 @@ export const eventsData = [
     },
 
 
-    {
-      id: 4,
-      title: "Inception(ppt)",
-      image: "/images/events/inception.jpg",
-      description: "ENHANCE YOUR CONFIDENCE",
-      rules: [
-        "Individual participation only.",
-        "Prepare a PowerPoint presentation (min. 8 slides) based on the given theme.",
-        "5 minutes per presentation. Warning bell at 4 minutes.",
-        " Submit your file in .ppt/.pptx format via USB or email.",
-        "Judging criteria:   Presentation Skills, Slide Design & Visual Appeal, Time Management, Q&A Handling  ",
-        "Judges’ decision is final.  ",
-      ],
-      organizers: [
-        { name: "Tarannum Sheikh", contact: "+91 9740732650" },
-        { name: "Aiysha  Sheikh", contact: "+91 98804 04021" },
-      ],
-    },
+  {
+  id: 4,
+  title: "Inception (PPT)",
+  image: "/images/events/inception.jpg",
+  description: "ENHANCE YOUR CONFIDENCE",
+  rules: [
+    "Individual participation only.",
+    "There will be two rounds.",
+    "Prepare a PowerPoint presentation (minimum 8 slides) based on the given topic.",
+    "5 minutes per presentation. Warning bell at 4 minutes, followed by 1 minute for Q&A.",
+    "Submit your file in .ppt/.pptx format via USB or email.",
+    "Judging criteria:",
+    "• Presentation Skills",
+    "• Slide Design & Visual Appeal",
+    "• Time Management",
+    "• Q&A Handling",
+    "Judges’ decision is final."
+  ],
+  organizers: [
+    { name: "Tarannum Sheikh", contact: "+91 9740732650" },
+    { name: "Aiysha Sheikh", contact: "+91 98804 04021" }
+  ]
+},
+
       {
         id: 5,
         title: "The Matrix(quiz)",
@@ -153,14 +159,14 @@ export const eventsData = [
         description: "ONE TEAN ONE FIGHT",
         rules: [
           "All teams must consist of 2 members exactly. ",
-          "Each match shall be of 5 minutes.",
+          "Each match shall be of 2 minutes.",
           "Players must bring their own devices.",
           "All participants must put their devices on airplane mode. ",
           "Your current game in the phone will be uninstalled and you should play with the game is provided by event co-ordinators.",
           "If the game is stopped due to network failure, the round will be restarted. ",
           "If one of the players forfeit the match the team will be disqualified and the other team will be declared as winner.  ",
           " The winner of the match would be decided on the basis of kills gained by each team in a given match. ",
-          "Co-ordinators decision is final.  ",
+          "Co-ordinators decision is final. ",
         ],
         organizers: [
           { name: "Shreya  Shetty", contact: "+91 8147837045" },
